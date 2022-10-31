@@ -1,10 +1,35 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
+
+<html>
+<head xmlns="http://www.w3.org/1999/html">
+    <script src="https://code.jquery.com/jquery-3.1.1.min.js"
+            integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8=" crossorigin="anonymous"></script>
 </head>
-<body>
-<h1>It is Short URL service</h1>
-</body>
+<main>
+    <h1>Short URL Service</h1>
+    <form id="post-form">
+        {% csrf_token %}
+        <input type="text" name="link" placeholder="Enter URL here">
+        <div class="buttons">
+            <button type="submit" id="shorten">Short It!</button>
+        </div>
+    </form>
+</main>
+
+<script type="text/javascript">
+    $(document).on('submit', '#post-form', function (e) {
+        e.preventDefault();
+    });
+    $.ajax({
+        type: 'POST'
+        url: '/create',
+        data: {
+            link:$('#link').val(),
+             csrfmiddlewaretoken:$('input[name=csrfmiddlewaretoken]').val(),
+        },
+        succes: function (){
+
+        }
+    });
+});
+</script>
 </html>
