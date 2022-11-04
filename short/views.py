@@ -1,10 +1,12 @@
-from django.http import HttpResponse
+import datetime
+from datetime import timedelta
+
+from django.http import HttpResponse, HttpResponseRedirect
 from django.shortcuts import render, redirect
+
 from short.models import Url
 from short.utils import random_choice
 from .validators import validate_url
-import datetime
-from datetime import timedelta
 
 
 def index(request):
@@ -25,5 +27,9 @@ def create(request):
 
 
 def redirect_url(request, pk):
-    url_details = Url.objects.get(short_link=pk)
-    return redirect(url_details.link)
+    try:
+        url_details = Url.objects.get(short_link=pk)
+        return HttpResponseRedirect(url_details.link)
+    except Url.DoesNotExist:
+        url_details = ''
+        return HttpResponseRedirect(url_details)
