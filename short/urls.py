@@ -1,5 +1,4 @@
 from django.urls import path
-from datetime import timedelta
 
 from . import views
 

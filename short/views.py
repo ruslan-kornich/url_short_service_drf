@@ -2,7 +2,7 @@ import datetime
 from datetime import timedelta
 
 from django.http import HttpResponse, HttpResponseRedirect
-from django.shortcuts import render, redirect
+from django.shortcuts import render
 
 from short.models import Url
 from short.utils import random_choice
