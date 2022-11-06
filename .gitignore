@@ -127,6 +127,7 @@ Control.ca-list
 Control.ca-bundle
 Control.system-ca-bundle
 GitHub.sublime-settings
+prod_settings.py
 
 # Visual Studio Code #
 .vscode/*
