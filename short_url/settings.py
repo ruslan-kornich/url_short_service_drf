@@ -12,21 +12,20 @@ https://docs.djangoproject.com/en/4.1/ref/settings/
 import os
 from pathlib import Path
 
-# Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
-print("base dir path", BASE_DIR)
+SECRET_KEY = 'sdjhue493482hdjsd0ae8*x3t!(2^j0nsojhv+&b&jub1i2v5jtmap5g)z#7z9(8ymc'
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/4.1/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'django-insecure-0ae8*x3t!(2^j0nsojhv+&b&jub1i2v5jtmap5g)z#7z9(8ymc'
+# SECRET_KEY = 'django-insecure-0ae8*x3t!(2^j0nsojhv+&b&jub1i2v5jtmap5g)z#7z9(8ymc'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = True
 
-ALLOWED_HOSTS = ['127.0.0.1', '88.210.9.125', 's-sh.fun']
+ALLOWED_HOSTS = ['127.0.0.1']
 
 # Application definition
 
@@ -59,7 +58,7 @@ ROOT_URLCONF = 'short_url.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': [BASE_DIR / 'templates'],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -79,12 +78,8 @@ WSGI_APPLICATION = 'short_url.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': 'short',
-        'USER': 'userdb',
-        'PASSWORD': '123456',
-        'HOST': 'localhost',
-        'PORT': '5432',
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
     }
 }
 # Password validation
@@ -118,12 +113,8 @@ USE_TZ = False
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/4.1/howto/static-files/
-
 STATIC_URL = '/static/'
-STATICFILES_DIRS = (
-    os.path.join(BASE_DIR, 'static'),
-)
-STATIC_ROOT = '/home/john/url_short_service_drf/static/assets/'
+STATICFILES_DIRS = [os.path.join(BASE_DIR, "static")]
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.1/ref/settings/#default-auto-field
@@ -140,3 +131,5 @@ REST_FRAMEWORK = {
 CRONJOBS = [
     ('*/59 * * * *', 'api.cron.cleaner_data')
 ]
+
+CSRF_TRUSTED_ORIGINS = ['https://s-sh.fun']
