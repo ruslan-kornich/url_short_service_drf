@@ -10,7 +10,7 @@ $(document).on('submit','#post-form',function(e){
         rng:$('input[name=rng]').val(),
       },
       success: function(data){
-        $('h2').html("http://127.0.0.1:8000/"+data)
+        $('h2').html("http://s-sh.fun/"+data)
       }
     });
   });
