@@ -15,6 +15,50 @@
 Django/Django REST Framework
 Python 
 
+## Установка 
+
+-Клонировать репозиторий
+
+```bash
+git clone https://github.com/ruslan-kornich/url_short_service_drf.git
+```
+
+Создать и активировать виртуально окружение:
+
+```bash
+$ python3 -m venv venv
+$ source venv/bin/activate
+```
+
+Установить зависимости:
+
+```bash
+$ pip install -r requirements.txt
+```
+
+Запустить сервер:
+
+```bash
+$ python3 manage.py runserver
+```
+## Запуск крон
+
+
+
+```bash
+$ python manage.py crontab add
+```
+запустит задачу которая раз в час будет проверять и удалять ссылки из БД дата которых подходит к концу  
+
+
+Доступ к админ панели по ссылке   
+admin/
+
+пароль/логин   admin/admin
+
+
+## API:
+Поддержка запросов GET, POST, PUT, DELETE для взаимодействия с приложениями
 ## Предполагаемая структура данных
 
 ```jsx
