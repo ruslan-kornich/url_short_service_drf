@@ -1,7 +1,7 @@
 import datetime
 from datetime import timedelta
 
-from django.http import HttpResponse, HttpResponseRedirect
+from django.http import HttpResponse, HttpResponseRedirect, Http404
 from django.shortcuts import render
 
 from short.models import Url
@@ -31,5 +31,5 @@ def redirect_url(request, pk):
         url_details = Url.objects.get(short_link=pk)
         return HttpResponseRedirect(url_details.link)
     except Url.DoesNotExist:
-        url_details = ''
-        return HttpResponseRedirect(url_details)
+        raise Http404("No URL matches the given query.")
+
