@@ -99,52 +99,40 @@ admin/
 ```jsx
 // Тело запроса
 {
-"short_url": [
-    	{
-            "link": "https://docs.python.org/3/tutorial/index.html", 
-            "end_time": "2022-11-05T11:51:45"
-        
-        
-		}
-  	]
+    "link" : "https://docs.djangoproject.com/en/4.1/topics/auth/passwords/",
+    "end_time" : "2023-03-08T11:58:38.000315"
 }
 // Ответ
 {
-    "success":"Url y3L9o3 created successfully"
+    "pk": 80,
+    "link": "https://docs.djangoproject.com/en/4.1/topics/auth/passwords/",
+    "short_link": "r7Q0W8",
+    "time_create": "2022-12-10T17:42:34.045765",
+    "end_time": "2023-03-08T11:58:38.000315"
 }
 
 ```
-### PUT /api/v1/urls/
+### PUT /api/v1/urls/{id}
 ```jsx
 // Тело запроса
 
 {
-"short_url":[
-    {
-		"link": "https://www.django-rest-framework.org/api-guide/fields/",
-      	"short_link": "u4n9L1",
-        "end_time": "2022-11-05T11:51:45"
-	}
-  ]
+    "link": "https://docs.djangoproject.com/en/4.1/topics/auth/passwords/tests",
+    "end_time": "2024-03-08T11:58:38.000315"
 }
 // Ответ
 {
-    "success":"Url 'u4n9L1' updated successfully"
+    "pk": 80,
+    "link": "https://docs.djangoproject.com/en/4.1/topics/auth/passwords/tests",
+    "short_link": "r7Q0W8",
+    "time_create": "2022-12-10T17:42:34.045765",
+    "end_time": "2023-03-08T11:58:38.000315"
 }
 ```
-### DELETE /api/v1/urls/
+### DELETE /api/v1/urls/{id}
 ```jsx
-// Тело запроса
-{
-"short_url":[
-    {
-      	"short_link": "y3L9o3"
-	}
-  ]
-}
+
 // Ответ
-{
-    "success": "Url https://docs.python.org/3/tutorial/index.html delete"
-}
+"Link r7Q0W8 removed"
 ```
 
