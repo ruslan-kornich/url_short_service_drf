@@ -4,6 +4,7 @@ from datetime import timedelta
 from django.contrib.sites.shortcuts import get_current_site
 from django.http import Http404, HttpResponse
 from django.shortcuts import render, redirect
+from rest_framework import status
 
 from short.models import Url
 from short.utils import random_choice
@@ -27,14 +28,14 @@ def create(request):
                 link_in_base.end_time = end_time
                 link_in_base.save()
                 if link_in_base is not None:
-                    return HttpResponse(current_site + "/" + link_in_base.short_link)
+                    return HttpResponse(current_site + "/" + link_in_base.short_link, status=status.HTTP_200_OK)
             else:
                 short_link = random_choice()
                 new_link = Url(link=link, short_link=short_link, time_create=time_create, end_time=end_time)
                 new_link.save()
-                return HttpResponse(current_site + "/" + short_link)
+                return HttpResponse(current_site + "/" + short_link, status=status.HTTP_200_OK)
 
-    return HttpResponse("Error Enter Your URL")
+    return HttpResponse("Error Enter Your URL", status=status.HTTP_400_BAD_REQUEST)
 
 
 def redirect_url(request, pk):

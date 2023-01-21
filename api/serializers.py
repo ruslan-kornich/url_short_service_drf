@@ -18,7 +18,6 @@ class ShortURLSerializer(serializers.ModelSerializer):
                 link_in_base.end_time = validated_data['end_time']
                 print(validated_data["end_time"])
                 link_in_base.save()
-                print(link_in_base)
                 return link_in_base
             else:
                 short = dict(link=validated_data['link'],
