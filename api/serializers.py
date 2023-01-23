@@ -1,4 +1,5 @@
 from rest_framework import serializers
+from rest_framework.serializers import ValidationError
 
 from short.models import Url
 from short.utils import random_choice
@@ -16,7 +17,6 @@ class ShortURLSerializer(serializers.ModelSerializer):
             if Url.objects.filter(link=link).exists():
                 link_in_base = Url.objects.get(link=link)
                 link_in_base.end_time = validated_data['end_time']
-                print(validated_data["end_time"])
                 link_in_base.save()
                 return link_in_base
             else:
@@ -25,6 +25,8 @@ class ShortURLSerializer(serializers.ModelSerializer):
                              end_time=validated_data['end_time'])
                 validated_data.update(short)
                 return Url.objects.create(**validated_data)
+        else:
+            raise ValidationError({"error": "Please enter a valid URL"})
 
     def update(self, instance, validated_data):
         instance.link = validated_data.get('link', instance.link)

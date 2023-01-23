@@ -35,7 +35,7 @@ def create(request):
                 new_link.save()
                 return HttpResponse(current_site + "/" + short_link, status=status.HTTP_200_OK)
 
-    return HttpResponse("Error Enter Your URL", status=status.HTTP_400_BAD_REQUEST)
+    return HttpResponse("Enter Correct URL", status=status.HTTP_200_OK)
 
 
 def redirect_url(request, pk):
