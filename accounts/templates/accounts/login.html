@@ -1,0 +1,61 @@
+{% extends "base.html" %}
+
+{% block content %}
+<style>
+    .container {
+        display: flex;
+        justify-content: center;
+        align-items: flex-start; /* Выравнивание блока "Login" по верху экрана */
+        height: 100vh;
+    }
+
+    .dark-login-card {
+        background-color: #333;
+        color: #ddd;
+        border: none;
+        margin-top: 50px;  /* Отступ сверху для карточки логина */
+    }
+
+    .dark-login-card input {
+        background-color: #444;
+        color: #ddd;
+        border: 1px solid #555;
+    }
+
+    .dark-login-card input::placeholder {
+        color: #aaa;
+    }
+
+    .dark-login-card button {
+        background-color: #007bff;
+        color: #fff;
+        border: none;
+    }
+
+    .dark-login-card button:hover {
+        background-color: #0056b3;
+    }
+</style>
+
+<div class="container">
+    <div class="card dark-login-card w-100" style="max-width: 400px;">
+        <div class="card-body">
+            <h2 class="card-title text-center">Login</h2>
+            <form method="post">
+                {% csrf_token %}
+                <div class="mb-3">
+                    <label for="username" class="form-label">Username</label>
+                    <input type="text" class="form-control" id="username" name="username" placeholder="Enter your username">
+                </div>
+                <div class="mb-3">
+                    <label for="password" class="form-label">Password</label>
+                    <input type="password" class="form-control" id="password" name="password" placeholder="Enter your password">
+                </div>
+                <div class="d-grid gap-2">
+                    <button type="submit" class="btn btn-primary">Login</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+{% endblock %}

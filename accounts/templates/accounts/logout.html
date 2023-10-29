@@ -1,0 +1,52 @@
+{% extends "base.html" %}
+
+{% block title %}Logout - Short URL Service{% endblock %}
+
+{% block content %}
+<style>
+    .logout-container {
+        background-color: #333;
+        color: #fff;
+        height: 100vh;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .logout-card {
+        background-color: #444;
+        border: none;
+    }
+
+    .logout-card h2 {
+        color: #fff;
+    }
+
+    .logout-button {
+        background-color: #dc3545;
+        color: #fff;
+        border: none;
+    }
+
+    .logout-button:hover {
+        background-color: #c82333;
+    }
+</style>
+
+<div class="container logout-container">
+    <div class="card logout-card" style="max-width: 400px;">
+        <div class="card-body">
+            <h2 class="card-title text-center">Logout</h2>
+            <form method="post">
+                {% csrf_token %}
+                <div class="mb-3">
+                    <p class="text-center">Вы уверены, что хотите выйти?</p>
+                </div>
+                <div class="d-grid gap-2">
+                    <button type="submit" class="btn btn-primary logout-button">Выйти</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+{% endblock %}

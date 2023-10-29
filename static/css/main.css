@@ -1,74 +1,60 @@
-*,
-*::before,
-*::after {
-    box-sizing: border-box;
-}
-
-body,
-section {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    padding: 1rem;
-}
-
 body {
-    min-height: 100vh;
-    font-family: "Lato", sans-serif;
-    line-height: 1.5;
-    color: #111;
+    background: linear-gradient(to right, #2A3A51, #1A202C);
+    font-family: 'Arial', sans-serif;
+    color: #F1F1F2;
 }
 
-main {
-    max-width: 720px;
-    width: 100%;
-    border: 5px solid #03518a;
+.container {
+    max-width: 600px;
+    margin: 50px auto;
+    padding: 20px;
+    border-radius: 15px;
+    background: rgba(255, 255, 255, 0.1); /* Полупрозрачный фон */
+    backdrop-filter: blur(10px); /* Эффект размытия фона */
+    box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+}
+
+input[type="text"] {
     border-radius: 5px;
-    box-shadow: 0 20px 30px rgba(17, 17, 17, 0.125),
-    0 5px 5px rgba(17, 17, 17, 0.25);
-    background-image: linear-gradient(to top, #03e3fc 0%, #03518a 100%);
-}
-
-h1 {
-    padding: 1rem;
-    color: white;
-    text-align: center;
-}
-
-input,
-button {
-    font-family: inherit;
-    line-height: inherit;
-    color: inherit;
-    border: 0;
-    padding: 1rem;
-}
-
-input {
-    box-sizing: border-box;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    padding: 10px 15px;
     width: 100%;
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    background: rgba(255, 255, 255, 0.1);
+    margin-bottom: 10px;
+    transition: transform 0.2s ease;
 }
 
-.buttons {
-    display: flex;
+input[type="text"]:focus {
+    transform: scale(1.05);
+    outline: none;
+    border-color: #007BFF;
 }
 
 button {
+    border-radius: 5px;
+    padding: 10px 15px;
+    background: linear-gradient(90deg, #007BFF, #00C6FF);
+    color: #ffffff;
+    border: none;
     cursor: pointer;
-    flex: 1;
-    background-color: transparent;
-    color: white;}
-
-
-
-
-section {
-    min-height: 120px;
-    text-align: center;
-    background-color: white;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    transition: transform 0.2s ease;
 }
 
-output {
-    text-align: center;
+button:hover {
+    transform: scale(1.05);
 }
 
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+.container {
+    animation: fadeIn 1s;
+}

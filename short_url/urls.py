@@ -7,7 +7,7 @@ API_DESCRIPTION = "Short URL Service API"
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', include('short.urls')),
+    path('', include('accounts.urls')),
     path('api/v1/', include('api.urls', namespace='api')),
-    path("api/v1/docs/", include_docs_urls(title=API_TITLE,
-                                           description=API_DESCRIPTION)),
+
 ]
