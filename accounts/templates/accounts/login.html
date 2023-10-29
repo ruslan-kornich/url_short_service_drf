@@ -5,7 +5,7 @@
     .container {
         display: flex;
         justify-content: center;
-        align-items: flex-start; /* Выравнивание блока "Login" по верху экрана */
+        align-items: flex-start;
         height: 100vh;
     }
 
@@ -13,7 +13,7 @@
         background-color: #333;
         color: #ddd;
         border: none;
-        margin-top: 50px;  /* Отступ сверху для карточки логина */
+        margin-top: 50px;
     }
 
     .dark-login-card input {
@@ -45,11 +45,11 @@
                 {% csrf_token %}
                 <div class="mb-3">
                     <label for="username" class="form-label">Username</label>
-                    <input type="text" class="form-control" id="username" name="username" placeholder="Enter your username">
+                    <input type="text" class="form-control" id="username" name="username" placeholder="username">
                 </div>
                 <div class="mb-3">
                     <label for="password" class="form-label">Password</label>
-                    <input type="password" class="form-control" id="password" name="password" placeholder="Enter your password">
+                    <input type="password" class="form-control" id="password" name="password" placeholder="password">
                 </div>
                 <div class="d-grid gap-2">
                     <button type="submit" class="btn btn-primary">Login</button>

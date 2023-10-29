@@ -1,0 +1,85 @@
+{% extends "base.html" %}
+
+{% block content %}
+<style>
+    .url-messages {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .message {
+        width: 100%;
+        max-width: 800px;
+        margin-bottom: 20px;
+        padding: 15px;
+        border-radius: 10px;
+        background-color: #e1f3fb;
+        box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+        position: relative;
+    }
+
+    .message-content {
+        margin: 0;
+    }
+
+    .message-content p {
+        margin: 0;
+        padding: 2px 0;
+        color: black;
+    }
+
+    .start-time, .end-time {
+        font-size: 12px;
+        color: black;
+        position: absolute;
+        right: 15px;
+    }
+
+    .start-time {
+        top: 15px;
+    }
+
+    .end-time {
+        bottom: 15px;
+    }
+</style>
+
+<div class="container mt-5">
+    <h2 class="mb-5">Your URLs</h2>
+    <div class="url-messages">
+        {% for url in page.object_list %}
+            <div class="message">
+                <div class="message-content">
+                    <p><strong>ID:</strong> {{  url.short_link }}</p>
+                    <p><strong>Short URL:</strong> <a href="http://127.0.0.1:8000/{{  url.short_link }}" target="_blank" >{{ url.short_link }}</a></p>
+                     <p><strong>URL:</strong> <a href="{{ url.link }}" style="color: #007BFF;" target="_blank">Full Link</a></p>
+                    <p><strong>Clicks:</strong> {{ url.clicks }}</p>
+                </div>
+                <span class="start-time"><strong>Start:</strong> {{ url.time_create }}</span>
+                <span class="end-time"><strong>End:</strong> {{ url.end_time }}</span>
+            </div>
+        {% empty %}
+            <p>No URLs found.</p>
+        {% endfor %}
+    </div>
+
+    <div class="pagination mt-5">
+        <span class="step-links">
+            {% if page.has_previous %}
+                <a href="?page=1">&laquo; first</a>
+                <a href="?page={{ page.previous_page_number }}">previous</a>
+            {% endif %}
+
+            <span class="current-page">
+                Page {{ page.number }} of {{ page.paginator.num_pages }}.
+            </span>
+
+            {% if page.has_next %}
+                <a href="?page={{ page.next_page_number }}">next</a>
+                <a href="?page={{ page.paginator.num_pages }}">last &raquo;</a>
+            {% endif %}
+        </span>
+    </div>
+</div>
+{% endblock %}

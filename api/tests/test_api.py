@@ -40,8 +40,13 @@ def test_create_url_without_arguments_should_fail(client) -> None:
 
 def test_create_existing_url_should_be_succeed(client) -> None:
     Url.objects.create(link="https://www.google.com/")
-    response = client.post(path=link_url, data={"link": "https://www.google.com/",
-                                                "end_time": "2024-01-21T14:24:13.773645"})
+    response = client.post(
+        path=link_url,
+        data={
+            "link": "https://www.google.com/",
+            "end_time": "2024-01-21T14:24:13.773645",
+        },
+    )
     assert response.status_code == 201
 
 

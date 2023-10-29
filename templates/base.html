@@ -21,7 +21,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
     <link rel="stylesheet" href="{% static 'css/main.css' %}">
 
-    <link rel="shortcut icon" href="{% static '/favicon.ico' %}">
+    <link rel="shortcut icon" href="{% static '/favicon.png' %}">
     <title>{% block title %}Short URL Service{% endblock %}</title>
 </head>
 
@@ -34,23 +34,25 @@
 
         <div class="navbar-nav ms-auto">
             {% if user.is_authenticated %}
-            <div class="nav-item dropdown">
-                <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-bs-toggle="dropdown"
-                   aria-haspopup="true" aria-expanded="false">
-                    <i class="fas fa-user"></i> {{ user.username }}
-                </a>
-                <div class="dropdown-menu dropdown-menu-end" aria-labelledby="userDropdown">
-                    <a class="dropdown-item" href="{% url 'logout' %}">Выход</a>
+                <div class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-bs-toggle="dropdown"
+                       aria-haspopup="true" aria-expanded="false">
+                        <i class="fas fa-user"></i> {{ user.username }}
+                    </a>
+                    <div class="dropdown-menu dropdown-menu-end" aria-labelledby="userDropdown">
+                        <a class="dropdown-item" href="{% url 'user_urls' %}">My URL</a>  <!-- Добавляем ссылку на страницу пользовательских URL -->
+                        <a class="dropdown-item" href="{% url 'logout' %}">Logout</a>
+                    </div>
                 </div>
-            </div>
             {% else %}
-            <a class="nav-link" href="{% url 'login' %}">
-                <i class="fas fa-sign-in-alt"></i> Войти
-            </a>
+                <a class="nav-link" href="{% url 'login' %}">
+                    <i class="fas fa-sign-in-alt"></i> Login
+                </a>
             {% endif %}
         </div>
     </div>
 </nav>
+
 
 
 {% block content %}
