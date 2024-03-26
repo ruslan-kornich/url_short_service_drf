@@ -1,68 +1,82 @@
-# url_short_service_drf
+## URL Shortening Service
 
-# Сервис по сокращению ссылок
+**Task:**  
+Shorten long URLs to shorter ones without losing their value. This improves the readability of the link for the user.
 
-Задача: 
-Сокращать длинные URL до коротких без потери ее ценности. Это дает лучшую читаемость ссылки для пользователя.
+**Main requirements for the service:**
 
-Основные требования к сервису:
+- The service should transform the specified URL into a short one without cutting off its parameters;
+- The short link should reliably redirect the user to the external URL within the timeframe specified by the user. The range is from 1 day to 1 year. By default, 90 days;
+- The link should be as short as possible while maintaining its uniqueness within a million simultaneously stored links. A random number of links can be added every day, each of which can have its own lifespan;
+- The service should have an API interface for interaction with programs.
 
-- Сервис должен превращать указанную ссылку в короткую, не обрезая при этом ее параметры;
-- Короткая ссылка должна гарантированно перенаправлять пользователя на внешний url в течении указанного пользователем срока жизни. В диапазоне от 1 дня до 1 года. По умолчанию 90 дней;
-- Ссылка должна быть как можно короче, при этом сохраняя ее уникальность в рамках миллиона одновременно хранимых ссылок. Каждый день может добавляться случайное количество ссылок, каждая из которых может иметь свой срок жизни;
-- У сервиса должен быть API интерфейс для взаимодействия с программами.
-## Стэк:
-Django/Django REST Framework
-Python 
+## Stack:
+- Django/Django REST Framework
+- Python 
 
-## Установка 
+## Installation 
 
--Клонировать репозиторий
+- Clone the repository
+
 
 ```bash
 git clone https://github.com/ruslan-kornich/url_short_service_drf.git
 ```
 
-Создать и активировать виртуально окружение:
+- Create and activate a virtual environment:
 
 ```bash
 $ python3 -m venv venv
 $ source venv/bin/activate
 ```
 
-Установить зависимости:
+- Install dependencies:
 
 ```bash
 $ pip install -r requirements.txt
 ```
 
-Запустить сервер:
+- Run the server:
 
 ```bash
 $ python3 manage.py runserver
 ```
-## Запуск крон
+## Cron Job
 
 
 
 ```bash
 $ python manage.py crontab add
 ```
-запустит задачу которая раз в час будет проверять и удалять ссылки из БД дата которых подходит к концу  
+his will start a task that will check and delete links from the database whose end date is approaching every hour.
 
 
-Доступ к админ панели по ссылке   
+**Access the admin panel at** 
 admin/
 
-пароль/логин   admin/admin
+**Username/password:**     
+admin/admin
+
+## Example Login Page
+![Example login page](./screenshots/login.png)
+
+
+## Example Short URL page
+
+![Example Short URL page](./screenshots/short_page.png)
+
+## Example  of output of URLs stored in the database
+
+![Example Short URL page](./screenshots/created_url.png)
 
 
 ## API:
-Поддержка запросов GET, POST, PUT, DELETE для взаимодействия с приложениями
-## Предполагаемая структура данных
+Supports GET, POST, PUT, DELETE requests for interaction with applications
+
+## Expected data structure
 
 ```jsx
-// short_url - ссылки хранятся в БД
+// short_url - links are stored in the database
 {
 	id: 
 	link: String
@@ -72,10 +86,11 @@ admin/
 }
 ```
 
-### Описание работы API
-### GET /api/v1/urls/
+### API Operation Description
+
+#### GET /api/v1/urls/
 ```jsx
-// Ответ
+// Response
 {
     "short_url": [
         {
@@ -97,12 +112,12 @@ admin/
 ```
 ### POST /api/v1/urls/
 ```jsx
-// Тело запроса
+// Request Body
 {
     "link" : "https://docs.djangoproject.com/en/4.1/topics/auth/passwords/",
     "end_time" : "2023-03-08T11:58:38.000315"
 }
-// Ответ
+// Request Body
 {
     "pk": 80,
     "link": "https://docs.djangoproject.com/en/4.1/topics/auth/passwords/",
@@ -114,7 +129,7 @@ admin/
 ```
 ### PUT /api/v1/urls/{id}
 ```jsx
-// Тело запроса
+// Request Body
 
 {
     "link": "https://docs.djangoproject.com/en/4.1/topics/auth/passwords/tests",
@@ -132,7 +147,7 @@ admin/
 ### DELETE /api/v1/urls/{id}
 ```jsx
 
-// Ответ
+// Response
 "Link r7Q0W8 removed"
 ```
 
