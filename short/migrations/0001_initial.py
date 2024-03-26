@@ -15,15 +15,32 @@ class Migration(migrations.Migration):
 
     operations = [
         migrations.CreateModel(
-            name='Url',
+            name="Url",
             fields=[
-                ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('link', models.CharField(max_length=2083)),
-                ('short_link', models.CharField(blank=True, default='', max_length=255)),
-                ('time_create', models.DateTimeField(auto_now_add=True)),
-                ('end_time', models.DateTimeField(null=True)),
-                ('clicks', models.IntegerField(default=0)),
-                ('user', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to=settings.AUTH_USER_MODEL)),
+                (
+                    "id",
+                    models.BigAutoField(
+                        auto_created=True,
+                        primary_key=True,
+                        serialize=False,
+                        verbose_name="ID",
+                    ),
+                ),
+                ("link", models.CharField(max_length=2083)),
+                (
+                    "short_link",
+                    models.CharField(blank=True, default="", max_length=255),
+                ),
+                ("time_create", models.DateTimeField(auto_now_add=True)),
+                ("end_time", models.DateTimeField(null=True)),
+                ("clicks", models.IntegerField(default=0)),
+                (
+                    "user",
+                    models.ForeignKey(
+                        on_delete=django.db.models.deletion.CASCADE,
+                        to=settings.AUTH_USER_MODEL,
+                    ),
+                ),
             ],
         ),
     ]

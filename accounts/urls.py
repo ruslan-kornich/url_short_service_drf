@@ -9,5 +9,4 @@ urlpatterns = [
         name="login",
     ),
     path("logout/", views.custom_logout, name="logout"),
-
 ]
